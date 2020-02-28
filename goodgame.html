@@ -47,12 +47,13 @@
     <script>
       var numInicial = Math.floor(Math.random()*12);
       var resultado = "";
+      document.getElementById("resultado").innerHTML = resultado;
       console.log(numInicial);
 
-      document.getElementById("mayor").addEventListener("click", compararNumeros(true));
-      document.getElementById("menor").addEventListener("click", compararNumeros(false));
+      document.getElementById("mayor").addEventListener("click", compararNumeros();
+      document.getElementById("menor").addEventListener("click", compararNumeros2();
 
-      function compararNumeros(esMayor){
+      function compararNumeros(){
         var numElegido = Math.floor(Math.random()*12);
 
         console.log(numElegido);
@@ -62,7 +63,7 @@
           resultado = "PERDISTE :(";
         }
         console.log(resultado);
-
+      }
         function revelarCartaElegida(){
           var image = document.getElementById("SegundaCarta");
             if (image.src.match("on")) {

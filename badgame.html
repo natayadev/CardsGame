@@ -24,7 +24,7 @@
     <sub>---Juego de cartas al azar---</sub><br>
 
     <img id="emojiL" src="magicwand.png">
-    <i>Adivina, adivinador... ¿Qué será la siguiente carta?</i>
+    <i>Adivina, adivinador... La siguiente carta<sub style=color:#9B3EF9> no </sub>será...</i>
     <img id="emojiR" src="magicwand.png"><br>
     <sup>(Haz click en la primera carta para descubrir)</sup>
     <br>
@@ -34,37 +34,24 @@
       <img id="SegundaCarta" class="card" src="cards/back.png">
       <br><br>
 
-      <button type="button" id="mayor" class="ui teal button">Menor</button>
-      <button type="button" id="menor" class="ui teal button">Mayor</button>
+      <button type="button" id="mayor" onclick="compararMayor()" class="ui teal button">Menor</button>
+      <button type="button" id="menor" onclick="compararMenor()" class="ui teal button">Mayor</button>
 
       <h1 id="resultado"><h1>
 
       <br><br>
-      <input type="button" value="Volver a jugar" onclick="window.close()" class="ui teal button"></input>
+      <input type="button" value="Volver a jugar" onclick="location.reload()" class="ui teal button"></input>
 
     </div>
 
     <script>
       var numInicial = Math.floor(Math.random()*12);
+      var numElegido = Math.floor(Math.random()*12);
       var resultado = "";
-      console.log(numInicial);
 
-      document.getElementById("mayor").addEventListener("click", compararNumeros(true));
-      document.getElementById("menor").addEventListener("click", compararNumeros(false));
-
-      function compararNumeros(esMayor){
-        var numElegido = Math.floor(Math.random()*12);
-
-        console.log(numElegido);
-        if ((numElegido > numInicial && esMayor) || ( numElegido < numInicial && !esMayor)) {
-          resultado = "GANASTE :D";
-        } else {
-          resultado = "PERDISTE :(";
-        }
-        console.log(resultado);
-
-        function revelarCartaElegida(){
-          var image = document.getElementById("SegundaCarta");
+      function compararMayor(){
+        document.getElementById("resultado").innerHTML = resultado;
+        var image = document.getElementById("SegundaCarta");
             if (image.src.match("on")) {
                 image.src = "cards/back.png";
             } else {
@@ -108,7 +95,64 @@
                 }
               }
             }
-          }
+            if (numElegido > numInicial) {
+              resultado = "GANASTE :D";
+            } else {
+              resultado = "PERDISTE :(";
+            }
+
+      function compararMenor(){
+        document.getElementById("resultado").innerHTML = resultado;
+        if (numElegido < numInicial) {
+
+          resultado = "GANASTE :D";
+        } else {
+          resultado = "PERDISTE :(";
+        }
+        var image = document.getElementById("SegundaCarta");
+                  if (image.src.match("on")) {
+                      image.src = "cards/back.png";
+                  } else {
+                    switch (numElegido) {
+                      case 0:
+                      image.src= "cards/2.png";
+                        break;
+                      case 1:
+                      image.src= "cards/3.png";
+                        break;
+                      case 2:
+                      image.src= "cards/4.png";
+                        break;
+                      case 3:
+                      image.src= "cards/5.png";
+                        break;
+                      case 4:
+                      image.src= "cards/6.png";
+                        break;
+                      case 5:
+                      image.src= "cards/7.png";
+                        break;
+                      case 6:
+                      image.src= "cards/8.png";
+                        break;
+                      case 7:
+                      image.src= "cards/9.png";
+                        break;
+                      case 8:
+                      image.src= "cards/J.png";
+                        break;
+                      case 9:
+                      image.src= "cards/Q.png";
+                        break;
+                      case 10:
+                      image.src= "cards/K.png";
+                        break;
+                      case 11:
+                      image.src= "cards/A.png";
+                        break;
+                      }
+                    }
+                  }
 
       function revelarCartaInicial(){
         var image = document.getElementById("PrimeraCarta");
@@ -156,6 +200,7 @@
               }
             }
           }
+
     </script>
 
   </body>
