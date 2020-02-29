@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
-    <link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href="badgame.css">
 
     <title>RandomCAT Game (Bad UX)</title>
   </head>
@@ -34,8 +34,8 @@
       <img id="SegundaCarta" class="card" src="cards/back.png">
       <br><br>
 
-      <button type="button" id="mayor" onclick="compararMayor()" class="ui teal button">Menor</button>
       <button type="button" id="menor" onclick="compararMenor()" class="ui teal button">Mayor</button>
+      <button type="button" id="mayor" onclick="compararMayor()" class="ui teal button">Menor</button>
 
       <h1 id="resultado"><h1>
 
@@ -45,12 +45,19 @@
     </div>
 
     <script>
-      var numInicial = Math.floor(Math.random()*12);
-      var numElegido = Math.floor(Math.random()*12);
+      do {
+        var numInicial = Math.floor(Math.random()*12);
+        var numElegido = Math.floor(Math.random()*12);
+      } while (numInicial==numElegido) {
+
+      }
       var resultado = "";
+      console.log(numInicial);
+      console.log(numElegido);
 
       function compararMayor(){
         document.getElementById("resultado").innerHTML = resultado;
+        
         var image = document.getElementById("SegundaCarta");
             if (image.src.match("on")) {
                 image.src = "cards/back.png";
@@ -103,12 +110,7 @@
 
       function compararMenor(){
         document.getElementById("resultado").innerHTML = resultado;
-        if (numElegido < numInicial) {
 
-          resultado = "GANASTE :D";
-        } else {
-          resultado = "PERDISTE :(";
-        }
         var image = document.getElementById("SegundaCarta");
                   if (image.src.match("on")) {
                       image.src = "cards/back.png";
@@ -152,6 +154,12 @@
                         break;
                       }
                     }
+                  }
+                  if (numElegido < numInicial) {
+
+                    resultado = "GANASTE :D";
+                  } else {
+                    resultado = "PERDISTE :(";
                   }
 
       function revelarCartaInicial(){
@@ -200,6 +208,7 @@
               }
             }
           }
+
 
     </script>
 
