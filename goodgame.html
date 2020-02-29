@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
-    <link rel="stylesheet" href="goodgame.css">
+    <link rel="stylesheet" href="css/goodgame.css">
 
     <title>RandomCAT Game (Good UX)</title>
   </head>
@@ -23,15 +23,15 @@
 
     <sub>---Juego de cartas al azar---</sub><br>
 
-    <img id="emojiL" src="magicwand.png">
+    <img id="emojiL" src="images/magicwand.png">
     <i>Adivina, adivinador... La siguiente carta será...</i>
-    <img id="emojiR" src="magicwand.png"><br>
+    <img id="emojiR" src="images/magicwand.png"><br>
     <sup>(Haz click en la primera carta para descubrir)</sup>
     <br>
 
     <div class="cards">
-      <img id="PrimeraCarta" onclick="revelarCartaInicial()" class="card" src="cards/back.png">
-      <img id="SegundaCarta" class="card" src="cards/back.png">
+      <img id="PrimeraCarta" onclick="revelarCartaInicial()" class="card" src="images/cards/back.png">
+      <img id="SegundaCarta" class="card" src="images/cards/back.png">
       <br><br>
 
       <button type="button" id="mayor" onclick="compararMayor()" class="ui teal button">Mayor</button>
@@ -43,174 +43,7 @@
       <input type="button" value="Volver a jugar" onclick="location.reload()" class="ui teal button"></input>
 
     </div>
-
-    <script>
-      do {
-        var numInicial = Math.floor(Math.random()*12);
-        var numElegido = Math.floor(Math.random()*12);
-      } while (numInicial==numElegido) {
-
-      }
-      var resultado = "";
-      console.log(numInicial);
-      console.log(numElegido);
-
-
-      function compararMayor(){
-        document.getElementById("resultado").innerHTML = resultado;
-        var image = document.getElementById("SegundaCarta");
-            if (image.src.match("on")) {
-                image.src = "cards/back.png";
-            } else {
-              switch (numElegido) {
-                case 0:
-                image.src= "cards/2.png";
-                  break;
-                case 1:
-                image.src= "cards/3.png";
-                  break;
-                case 2:
-                image.src= "cards/4.png";
-                  break;
-                case 3:
-                image.src= "cards/5.png";
-                  break;
-                case 4:
-                image.src= "cards/6.png";
-                  break;
-                case 5:
-                image.src= "cards/7.png";
-                  break;
-                case 6:
-                image.src= "cards/8.png";
-                  break;
-                case 7:
-                image.src= "cards/9.png";
-                  break;
-                case 8:
-                image.src= "cards/J.png";
-                  break;
-                case 9:
-                image.src= "cards/Q.png";
-                  break;
-                case 10:
-                image.src= "cards/K.png";
-                  break;
-                case 11:
-                image.src= "cards/A.png";
-                  break;
-                }
-              }
-            }
-            if (numElegido > numInicial) {
-              resultado = "GANASTE :D";
-            } else {
-              resultado = "PERDISTE :(";
-            }
-
-
-      function compararMenor(){
-        document.getElementById("resultado").innerHTML = resultado;
-
-        var image = document.getElementById("SegundaCarta");
-                  if (image.src.match("on")) {
-                      image.src = "cards/back.png";
-                  } else {
-                    switch (numElegido) {
-                      case 0:
-                      image.src= "cards/2.png";
-                        break;
-                      case 1:
-                      image.src= "cards/3.png";
-                        break;
-                      case 2:
-                      image.src= "cards/4.png";
-                        break;
-                      case 3:
-                      image.src= "cards/5.png";
-                        break;
-                      case 4:
-                      image.src= "cards/6.png";
-                        break;
-                      case 5:
-                      image.src= "cards/7.png";
-                        break;
-                      case 6:
-                      image.src= "cards/8.png";
-                        break;
-                      case 7:
-                      image.src= "cards/9.png";
-                        break;
-                      case 8:
-                      image.src= "cards/J.png";
-                        break;
-                      case 9:
-                      image.src= "cards/Q.png";
-                        break;
-                      case 10:
-                      image.src= "cards/K.png";
-                        break;
-                      case 11:
-                      image.src= "cards/A.png";
-                        break;
-                      }
-                    }
-                  }
-                  if (numElegido < numInicial) {
-                    resultado = "GANASTE :D";
-                  } else {
-                    resultado = "PERDISTE :(";
-                  }
-
-      function revelarCartaInicial(){
-        var image = document.getElementById("PrimeraCarta");
-
-          if (image.src.match("on")) {
-              image.src = "cards/back.png";
-          } else {
-            switch (numInicial) {
-              case 0:
-              image.src= "cards/2.png";
-                break;
-              case 1:
-              image.src= "cards/3.png";
-                break;
-              case 2:
-              image.src= "cards/4.png";
-                break;
-              case 3:
-              image.src= "cards/5.png";
-                break;
-              case 4:
-              image.src= "cards/6.png";
-                break;
-              case 5:
-              image.src= "cards/7.png";
-                break;
-              case 6:
-              image.src= "cards/8.png";
-                break;
-              case 7:
-              image.src= "cards/9.png";
-                break;
-              case 8:
-              image.src= "cards/J.png";
-                break;
-              case 9:
-              image.src= "cards/Q.png";
-                break;
-              case 10:
-              image.src= "cards/K.png";
-                break;
-              case 11:
-              image.src= "cards/A.png";
-                break;
-              }
-            }
-          }
-
-
-    </script>
+    <script src="js/scripts.js"></script>
 
   </body>
 </html>
